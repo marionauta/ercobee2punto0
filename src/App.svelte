@@ -32,22 +32,22 @@
 <div>
 	Días laborables:
 	{#if selectedMonth === 'custom'}
-	<input bind:value={customWorkDays}>
+	<input type=number bind:value={customWorkDays}>
 	{:else}
-	<input bind:value={workDays} disabled>
+	<input type=number bind:value={workDays} disabled>
 	{/if}
 </div>
 
 <div>
 	Días de vacaciones:
-	<input bind:value={vacationDays}>
+	<input type=number bind:value={vacationDays}>
 </div>
 
 <div>
 	Días de baja:
-	<input bind:value={sickDays}>
+	<input type=number bind:value={sickDays}>
 </div>
 
 <div>
-	<b>Total: {total}</b>
+	<b>Total: {total}€</b>
 </div>
