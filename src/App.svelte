@@ -7,15 +7,15 @@
 	let sickDays = 0;
 
 	const months = [
-		{ label: 'custom', workDays: undefined },
-		{ label: 'enero', workDays: 19 },
-		{ label: 'febrero', workDays: 20 },
-		{ label: 'marzo', workDays: 22 },
-		{ label: 'abril', workDays: 20 },
-		{ label: 'mayo', workDays: 21 },
+		{ key: 'custom', label: 'Custom' },
+		{ key: '2021/01', label: 'Enero 2021', workDays: 19 },
+		{ key: '2021/02', label: 'Febrero 2021', workDays: 20 },
+		{ key: '2021/03', label: 'Marzo 2021', workDays: 22 },
+		{ key: '2021/04', label: 'Abril 2021', workDays: 20 },
+		{ key: '2021/05', label: 'Mayo 2021', workDays: 21 },
 	];
 
-	$: workDays = months.find(m => m.label === selectedMonth)?.workDays ?? customWorkDays;
+	$: workDays = months.find(m => m.key === selectedMonth)?.workDays ?? customWorkDays;
 	$: daysWithBenefits = workDays - vacationDays - sickDays;
 	$: total = Math.min(220, pricePerDay * daysWithBenefits);
 </script>
@@ -44,8 +44,8 @@
 <div class=container>
 	<span>Mes:</span>
 	<select bind:value={selectedMonth}>
-		{#each months as month}
-		<option value={month.label}>{month.label}</option>
+		{#each months as month (month.key)}
+		<option value={month.key}>{month.label}</option>
 		{/each}
 	</select>
 
