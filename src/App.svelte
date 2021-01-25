@@ -32,8 +32,7 @@
 		align-self: center;
 		margin: 0;
 	}
-	.total {
-		font-weight: bold;
+	.center {
 		text-align: center;
 		line-height: 2rem;
 		grid-column-start: 1;
@@ -62,5 +61,8 @@
 	<span>Días de baja:</span>
 	<input type=number bind:value={sickDays}>
 
-	<span class=total>Total: {total}€</span>
+	<b class=center>Total: {total}€</b>
+	<a class=center href=https://github.com/marionauta/ercobee2punto0 target=_blank>
+		github repo
+	</a>
 </div>
