@@ -20,34 +20,47 @@
 	$: total = Math.min(220, pricePerDay * daysWithBenefits);
 </script>
 
-<div>
-	Mes:
+<style>
+	.container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		row-gap: .75rem;
+		max-width: 35rem;
+		margin: 0 auto;
+	}
+	.container * {
+		align-self: center;
+		margin: 0;
+	}
+	.total {
+		font-weight: bold;
+		text-align: center;
+		line-height: 2rem;
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+</style>
+
+<div class=container>
+	<span>Mes:</span>
 	<select bind:value={selectedMonth}>
 		{#each months as month}
 		<option value={month.label}>{month.label}</option>
 		{/each}
 	</select>
-</div>
 
-<div>
-	Días laborables:
+	<span>Días laborables:</span>
 	{#if selectedMonth === 'custom'}
 	<input type=number bind:value={customWorkDays}>
 	{:else}
 	<input type=number bind:value={workDays} disabled>
 	{/if}
-</div>
 
-<div>
-	Días de vacaciones:
+	<span>Días de vacaciones:</span>
 	<input type=number bind:value={vacationDays}>
-</div>
 
-<div>
-	Días de baja:
+	<span>Días de baja:</span>
 	<input type=number bind:value={sickDays}>
-</div>
 
-<div>
-	<b>Total: {total}€</b>
+	<span class=total>Total: {total}€</span>
 </div>
